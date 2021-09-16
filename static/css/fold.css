@@ -12,6 +12,11 @@
 }
 .timeline-starter{
     padding: 0 10vw;
+    margin-left: 130vw;
+    transition: margin-left 0.6s ease-out;
+}
+.js-body-ready .timeline-starter{
+    margin-left: 0;
 }
 
 .timeline-element-link{

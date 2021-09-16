@@ -200,12 +200,22 @@ a.button:visited{
 }
 
 #logo-laliberte img{
+  display: block;
+  transform: translateX(-28%);
+  transition: transform 0.3s ease-in-out;
+  width: 140%;
+  max-width: none;
+  height: auto;
+}
+#logo-laliberte:hover img{
+  transform:translateX(0%);
+}
+#logo-laliberte{
+  overflow: hidden;
   width: 20vw;
   max-width: calc(var(--berry-unit)*40);
   min-width: calc(var(--berry-unit)*21);
   height: auto;
-}
-#logo-laliberte{
   display: block;
   text-decoration: none;
 }
@@ -361,7 +371,7 @@ mark{
         grid-row-start: 4;
         grid-row-end: 7;
       }
-      .detail-article-content *:last-child{
+      .detail-article-content>*:last-child{
         border-bottom: 1px solid var(--color-text);
         padding-bottom: 7px;
       }

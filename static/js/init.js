@@ -198,8 +198,9 @@ function init (){
       // INITIALIZE
       insideFold = new FoldedDom(wrapper, folds);
       insideFold.setContent(baseContent);
-
+      
       tick();
+      document.querySelector('body').classList.add('js-body-ready');
     });
   }
 };
