@@ -1,0 +1,22 @@
+{{ define "main" }}
+	{{ if .Content }}
+		{{ with .Content }}<div>{{ . }}</div>{{ end }}
+	{{ end }}
+
+	<div class="timeline">
+	{{ range .Data.Pages }}
+		<article class="element">			
+			<a href="{{.Permalink}}">		
+				<h2>
+					{{ .Title }}	
+				</h2>
+		
+				{{ if .Params.date_display }}
+				  <span>{{ .Params.date_display }}</span>
+				{{ end }}
+			</a>
+		</article>
+	{{ end }}
+	</div>
+
+{{ end }}

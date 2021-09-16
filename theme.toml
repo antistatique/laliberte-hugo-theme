@@ -1,0 +1,11 @@
+name = "laliberte"
+license = "MIT"
+licenselink = ".../blob/master/LICENSE"
+description = "From blank Starter https://github.com/vimux/blank/ Hugo theme for developers. We built a theme to display La Liberté history"
+homepage = "https://github.com/antistatique/laliberte150/"
+min_version = "0.20"
+
+[author]
+  name = "antistatique"
+  homepage = "https://github.com/antistatique"
+

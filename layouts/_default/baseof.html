@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ .Title }}</title>
+	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+	<link rel="author" href="{{ "humans.txt" | relURL }}" />
+	<!-- <link rel="manifest" href="/manifest.json"> -->
+	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+	<link rel="stylesheet" href="{{ "css/fold.css" | relURL }}">
+	<script>
+		document.documentElement.className = document.documentElement.className.replace("no-js","js");
+	</script>
+
+	<script>
+		// Register our service-worker
+		// if (navigator.serviceWorker) {
+		// 	window.addEventListener('load', function() {
+		// 		navigator.serviceWorker.register('/sw.js', {
+		// 			scope: '/'
+		// 		});
+		// 		if (navigator.serviceWorker.controller) {
+		// 			navigator.serviceWorker.controller.postMessage({'command': 'trimCaches'});
+		// 		}
+		// 	});
+		// }
+	</script>
+
+	<script src="{{ "js/imagesLoaded.js" | relURL }}"></script>
+	<script src="{{ "js/init.js" | relURL }}" data-swup-ignore-script></script>
+	<script src="{{ "js/swup.js" | relURL }}" data-swup-ignore-script></script>
+</head>
+<body>
+	{{ partial "header" . }}
+	<main class="swup-transition-main" id="swup">
+		{{ block "main" . }}{{ end }}
+	</main>
+	{{ partial "footer" . }}
+	<script>
+		const swup = new Swup({
+			plugins: [new SwupPreloadPlugin()],
+			theme: [new SwupSlideTheme()]
+		});
+
+		init();
+
+		swup.on('contentReplaced', init);
+	</script>
+	<style>
+	.swup-transition-main {
+	  opacity: 1;
+	  transition: opacity 0.3s, transform 0.4s;
+	  transform: translate3d(0, 0, 0);
+	}
+	html.is-animating .swup-transition-main {
+	  opacity: 0;
+	  transform: translate3d(0, -100px, 0);
+	}
+	html.is-animating.is-leaving .swup-transition-main {
+	  opacity: 0;
+	  transform: translate3d(0, 100px, 0);
+	}
+	html.is-animating.swup-theme-reverse .swup-transition-main {
+	  opacity: 0;
+	  transform: translate3d(0, 60px, 0);
+	}
+	html.is-animating.swup-theme-reverse.is-leaving .swup-transition-main {
+	  opacity: 0;
+	  transform: translate3d(0, -60px, 0);
+	}
+	</style>
+</body>
+</html>

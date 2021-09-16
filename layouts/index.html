@@ -1,0 +1,43 @@
+{{ define "main" }}
+	{{.Content}}
+	<div class="content">
+		<div class="fold-content timeline" id="base-content">
+			<article class="timeline-element timeline-starter">
+				<img src="/images/timeline-title.svg" alt="{{ $.Site.Params.timelineTitle }}">
+			</article>
+			{{ range where .Site.Pages "Section" "article" }}
+			{{ if .Params.date_display }}
+			<article class="timeline-element">
+				<a href="{{.Permalink}}" class="timeline-element-link">
+
+					<h2 class="timeline-element-title h1">
+						{{ if .Params.title_style }}
+						 <span class="{{ .Params.title_style }}">
+						{{ end }}
+						{{ .Title }}
+						{{ if .Params.title_style }}
+						 </span>
+						{{ end }}
+					</h2>
+					{{ if .Params.banner }}
+					<img src="{{ .Params.banner | relURL }}" alt="{{ .Title }}" class=" content__img" />
+					{{ end }}
+				  <!-- <span>{{ .Params.date_display }}</span> -->
+				</a>
+			</article>
+			{{ end }}
+			{{else}}
+			<p>Aucun article</p>
+			{{ end }}
+		</div>
+		<div class="screen" id="fold-effect">
+			<div class="wrapper-3d">
+				<div class="fold fold-before fold-before-3"></div>
+				<div class="fold fold-before fold-before-2"></div>
+				<div class="fold fold-before fold-before-1"></div>
+				<!-- <div class="fold fold-main"></div> -->
+			</div>
+		</div>
+	</div>
+{{ end }}
+

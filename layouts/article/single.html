@@ -1,0 +1,98 @@
+{{ define "main" }}
+
+	<article class="detail-article">
+
+		{{ if .Params.banner }}
+		<img src="{{ .Params.banner | relURL }}" alt="{{ .Title }}" class="detail-article-banner" />
+		{{ end }}
+
+		<div class="detail-article-title">
+			<h1>
+				{{ if .Params.title_style }}
+				 <span class="{{ .Params.title_style }}">
+				{{ end }}
+				{{ .Title }}
+				{{ if .Params.title_style }}
+				 </span>
+				{{ end }}
+			</h1>
+		</div>
+
+		<aside class="detail-article-aside">
+			{{ if .Params.reading_time }}
+			  <div class="detail-article-readingtime">
+				  <span class="timer"></span>
+				  <p class="eiko h3">{{ markdownify .Params.reading_time }}</p>
+			  </div>
+			{{ end }}
+			{{ if .Params.author }}
+			  <p class="brik">{{ markdownify .Params.author }}</p>
+			{{ end }}
+		</aside>
+
+		{{ if .Params.summary }}
+		  <p class="detail-article-lead lead formula">{{ markdownify .Params.summary }}</p>
+		{{ end }}
+
+
+		<div class="detail-article-content">
+			{{ .Content }}
+		</div>
+
+		{{ if .Params.images }}
+			<div class="detail-article-images">
+			{{ range $val := .Params.images }}
+				<img src="{{ $val | relURL }}" class="detail-article-images-item" loading="lazy" />
+			{{ end }}
+			</div>
+		{{ end }}
+
+		{{ if .Params.videos }}
+			<div class="detail-article-video">
+				<div id="js-vimeo-embed" style="background-image: url({{ .Params.videos_cover | relURL }}) " class="detail-article-video-frame" data-id="{{ .Params.videos}}">
+					<a href="https://vimeo.com/{{ .Params.videos}}" id="js-play-video-link" class="detail-article-video-play-button">
+						<span class="play-button">
+							<span class="play-button-triangle">
+							</span>
+						</span>
+						<span class="detail-article-video-play-label brik h3">
+							{{ $.Site.Params.videoActionLabel }}
+						</span>
+					</a>
+				</div>
+
+				<script src="{{ "/js/vimeo.js" | relURL }}"></script>
+			</div>
+		{{ end }}
+
+	</article>
+
+	<div class="pagination-container">
+		<div class="pagination">
+			<h2 class="h3 formula">
+				{{ $.Site.Params.circulateNavigationTitle }}
+			</h2>
+			<nav>
+				{{ if .PrevInSection }}
+				<a href="{{.PrevInSection.Permalink}}" class="prev">
+					<h3 class="{{ .PrevInSection.Params.title_style }} pagination-title h2">
+						{{.PrevInSection.Title}}
+					</h3>
+					<span class="arrow"></span>
+					<img src="{{ .PrevInSection.Params.banner | relURL }}" alt="{{.PrevInSection.Title}}" class="pagination-item-banner" width="126" height="126" />
+				</a>
+				{{ end }}
+				{{ if .NextInSection }}
+				<a href="{{.NextInSection.Permalink}}" class="next">
+					<img src="{{ .NextInSection.Params.banner | relURL }}" alt="{{.NextInSection.Title}}" class="pagination-item-banner" width="126" height="126" />
+					<span class="arrow"></span>
+					<h3 class="{{ .NextInSection.Params.title_style }} pagination-title h2">
+						{{.NextInSection.Title}}
+					</h3>
+				</a>
+				{{ end }}
+			</nav>
+			<a href="{{ $.Site.Params.aboutPageSlug | relURL }}" class="nav-link formula">{{ $.Site.Params.aboutPageTitle }}</a>
+		</div>
+	</div>
+{{ end }}
