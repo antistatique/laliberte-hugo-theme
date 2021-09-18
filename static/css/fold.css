@@ -5,13 +5,13 @@
 }
 .timeline-element{
     background-color: var(--color-brand);
-    width: 50vw;
-    height: 100%;
+    width: 70vw;
+    height: 80%;
     display: flex;
     justify-content: center;
 }
 .timeline-starter{
-    padding: 0 10vw;
+    padding: 0 4vw;
     margin-left: 130vw;
     transition: margin-left 0.6s ease-out;
 }
@@ -22,14 +22,42 @@
 .timeline-element-link{
     color: var(--color-background);
     position:relative;
+    display: block;
+    width: 100%;
+}
+.timeline-element-link:hover .timeline-element-banner{
+    border: calc(var(--berry-unit)*2) solid var(--color-brand);
 }
 .timeline-element-title{
-    color: var(--color-background);
+    color: white;
     position: absolute;
-    bottom: 10%;
-    left: 10%;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* background: linear-gradient(0deg, rgba(0,0,0,200), rgba(0,0,0,200) 5%, rgba(0,0,0,0) 35%); */
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
 }
-.screen{
+.timeline-element-title>*{
+    padding: 0 calc(var(--berry-unit)*8);
+    width: 70%;
+}
+.timeline-element-date{
+    padding-bottom: calc(var(--berry-unit)*8);
+}
+
+.timeline-element-banner{
+    filter: contrast(80%);
+    box-sizing: border-box;
+    transition: border 0.4s ease-in-out;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.js .screen{
     position: fixed;
     top: 0;
     left: 0;
@@ -40,31 +68,32 @@
     height: 100vh;
     pointer-events: none;
 }
-.fold-scroller{
+.js .fold-scroller{
     height: 100%;
 }
 
-.fold-content{
+.js .fold-content{
     pointer-events: all;
     width: 100%;
 }
 
-.fold-size-fix{
+.js .fold-size-fix{
     width: 100%;
     height: 100%;
 }
 
-.fold-before .fold-size-fix{
+.js .fold-before .fold-size-fix{
     transform-origin: bottom center;
 }
 
-.fold-after .fold-size-fix{
+.js .fold-after .fold-size-fix{
     transform-origin: top center;
 }
-#base-content{
+.js #base-content{
     display: none;
 }
-.fold{
+
+.js .fold{
     overflow: hidden;
     width: calc(70vw + 1px);
     height: 100vh;
@@ -72,13 +101,13 @@
     will-change: transform;
 }
 
-.wrapper-3d{
+.js .wrapper-3d{
     position: relative;
     perspective: 50vw;
     transform-style: preserve-3d;
 }
 
-.fold-content{
+.js .fold-content{
     display: flex;
     height: 100%;
     flex-direction: row;
@@ -86,40 +115,39 @@
     align-items: flex-end;
 }
 
-.fold-scroller{
+.js .fold-scroller{
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 100%;
 }
 
-.fold-center{
+.js .fold-center{
     transform-origin: center center;
 }
 
-.wrapper-3d{
+.js .wrapper-3d{
     position: absolute;
     right: 0;
 }
 
-.fold-after{
-    /* background: #dadada; */
+.js .fold-after{
     position: absolute;
     transform-origin: top center;
-    transform: translate3d(0, 80vh, 0) rotateX(120deg);
+    transform: translate3d(-100%, 0, 0) rotateY(80deg);
     right: 0;
     left: 0;
     top: 0;
     bottom: 0;
 }
 
-.fold-size-fix{
+.js .fold-size-fix{
     transform-origin: center center;
     width: calc(100% + 1px);
     /* background-color: #f00; */
 }
 
-.fold-before{
+.js .fold-before{
     position: absolute;
     transform-origin: right center;
     transform: translate3d(-100%, 0, 0) rotateY(-10deg);
@@ -129,38 +157,38 @@
     bottom: 0;
 }
 
-.fold-before-1{
+.js .fold-before-1{
     transform: translate3d(-100%, 0, 0) rotateY(-35deg);
 }
 
-.fold-before-2{
+.js .fold-before-2{
     transform: translate3d(-100%, 0, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg);
-    /* transform: translate3d(calc(-100% + 3px), 0, 0) rotateY(-35.1deg) translate3d(-100%, 0, 0) rotateY(35deg);
+    /* transform: translate3d(calc(-100% + 3px), 0, 0) rotateY(-35.js .1deg) translate3d(-100%, 0, 0) rotateY(35deg);
     width: calc(40vw + 7px); */
 }
 
-.fold-before-3{
+.js .fold-before-3{
     transform: translate3d(-100%, 0, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg) translate3d(-100%, 0, 0) rotateY(110deg);
 }
 
 
-.fold-before-1 .fold-scroller{
+.js .fold-before-1 .fold-scroller{
     transform: translateX(-100%);
 }
 
-.fold-before-2 .fold-scroller{
+.js .fold-before-2 .fold-scroller{
     transform: translateX(0%);
 }
 
-.fold-before-3 .fold-scroller{
+.js .fold-before-3 .fold-scroller{
     transform: translateX(100%);
 }
 
-.fold-before-4 .fold-scroller{
+.js .fold-before-4 .fold-scroller{
     transform: translateX(400%);
 }
 
-.fold-before-1::after{
+.js .fold-before-1::after{
     content: '';
     /* background: rgba(0,0,0,0.08); */
     position: absolute;
@@ -172,7 +200,7 @@
     pointer-events: none;
 }
 
-.content{
+.js .content{
     /* -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: -moz-none;

@@ -4,7 +4,7 @@
 
 		{{ if .Params.banner }}
 		<img srcset="{{ .Params.banner | relURL }} 480w,
-		 {{ .Params.banner_hd | relURL }} 800w"
+		{{ if .Params.banner_hd }}{{ .Params.banner_hd | relURL }} 800w{{ end }}"
  sizes="(max-width: 800px) 480px,
 		800px" src="{{ .Params.banner | relURL }}" alt="{{ .Title }}" class="detail-article-banner" />
 		{{ end }}

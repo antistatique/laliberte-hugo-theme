@@ -273,6 +273,9 @@ h1, .h1, .h-huge{
   margin-top: 0;
   margin-bottom: 0;
 }
+.h-huge{
+  font-size: clamp(1.6em,calc(1.4em + 3vw),90px);
+}
 h2, .h2{
   font-size: clamp(1.2em,calc(1.2em + 1vw),60px);
   line-height: 1.3em;

@@ -6,25 +6,33 @@
 				<img src="/images/timeline-title.svg" alt="{{ $.Site.Params.timelineTitle }}">
 			</article>
 			{{ range where .Site.Pages "Section" "article" }}
-			{{ if .Params.date_display }}
+			{{ if .Title }}
+			{{ if .Params.banner }}
 			<article class="timeline-element">
 				<a href="{{.Permalink}}" class="timeline-element-link">
-
-					<h2 class="timeline-element-title h1">
-						{{ if .Params.title_style }}
-						 <span class="{{ .Params.title_style }}">
+					<div class="timeline-element-title">
+						<h2 class="h1 h-huge">
+							{{ if .Params.title_style }}
+							 <span class="{{ .Params.title_style }}">
+							{{ end }}
+							{{ .Title }}
+							{{ if .Params.title_style }}
+							 </span>
+							{{ end }}
+						</h2>
+						{{ if .Params.date_display }}
+						  <h3 class="timeline-element-date">{{ .Params.date_display }}</h3>
 						{{ end }}
-						{{ .Title }}
-						{{ if .Params.title_style }}
-						 </span>
-						{{ end }}
-					</h2>
+					</div>
 					{{ if .Params.banner }}
-					<img src="{{ .Params.banner | relURL }}" alt="{{ .Title }}" class=" content__img" />
+					<img srcset="{{ .Params.banner | relURL }} 480w,
+					{{ if .Params.banner_hd }}{{ .Params.banner_hd | relURL }} 800w{{ end }}"
+			 sizes="(max-width: 800px) 480px,
+					800px" src="{{ .Params.banner | relURL }}" alt="{{ .Title }}" class="timeline-element-banner" />
 					{{ end }}
-				  <!-- <span>{{ .Params.date_display }}</span> -->
 				</a>
 			</article>
+			{{ end }}
 			{{ end }}
 			{{else}}
 			<p>Aucun article</p>
@@ -32,10 +40,12 @@
 		</div>
 		<div class="screen" id="fold-effect">
 			<div class="wrapper-3d">
-				<div class="fold fold-before fold-before-3"></div>
-				<div class="fold fold-before fold-before-2"></div>
 				<div class="fold fold-before fold-before-1"></div>
-				<!-- <div class="fold fold-main"></div> -->
+				<div class="fold fold-before fold-before-2"></div>
+				<div class="fold fold-before fold-before-3"></div>
+				<!-- <div class="fold fold-main"></div>
+				<div class="fold fold-after fold-after-4"></div>
+				<div class="fold fold-after fold-after-5"></div> -->
 			</div>
 		</div>
 	</div>
