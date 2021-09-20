@@ -7,32 +7,33 @@
 			</article>
 			{{ range where .Site.Pages "Section" "article" }}
 			{{ if .Title }}
-			{{ if .Params.banner }}
-			<article class="timeline-element">
-				<a href="{{.Permalink}}" class="timeline-element-link">
-					<div class="timeline-element-title">
-						<h2 class="h1 h-huge">
-							{{ if .Params.title_style }}
-							 <span class="{{ .Params.title_style }}">
+				{{ if .Params.banner }}
+				<article class="timeline-element">
+					<a href="{{.Permalink}}" class="timeline-element-link">
+						<div class="timeline-element-title">
+							<h2 class="h1 h-huge">
+								{{ if .Params.title_style }}
+								 <span class="{{ .Params.title_style }}">
+								{{ end }}
+								{{ .Title }}
+								{{ if .Params.title_style }}
+								 </span>
+								{{ end }}
+							</h2>
+							{{ if .Params.date_display }}
+							  <h3 class="timeline-element-date">{{ .Params.date_display }}</h3>
 							{{ end }}
-							{{ .Title }}
-							{{ if .Params.title_style }}
-							 </span>
+						</div>
+						{{ if .Params.cover }}
+						<img src="{{ .Params.cover | relURL }}" alt="{{ .Title }}" class="timeline-element-banner" loading="lazy"/>
+						{{ else }}
+							{{ if .Params.banner }}
+								<img src="{{ .Params.banner | relURL }}" alt="{{ .Title }}" class="timeline-element-banner" loading="lazy"/>
 							{{ end }}
-						</h2>
-						{{ if .Params.date_display }}
-						  <h3 class="timeline-element-date">{{ .Params.date_display }}</h3>
 						{{ end }}
-					</div>
-					{{ if .Params.banner }}
-					<img srcset="{{ .Params.banner | relURL }} 480w,
-					{{ if .Params.banner_hd }}{{ .Params.banner_hd | relURL }} 800w{{ end }}"
-			 sizes="(max-width: 800px) 480px,
-					800px" src="{{ .Params.banner | relURL }}" alt="{{ .Title }}" class="timeline-element-banner" />
-					{{ end }}
-				</a>
-			</article>
-			{{ end }}
+					</a>
+				</article>
+				{{ end }}
 			{{ end }}
 			{{else}}
 			<p>Aucun article</p>
