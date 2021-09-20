@@ -15,6 +15,11 @@
     margin-left: 130vw;
     transition: margin-left 0.6s ease-out;
 }
+.timeline-starter img{
+    width: 20vw;
+    min-width: calc(var(--berry-unit)*40);
+    max-width: calc(var(--berry-unit)*120);
+}
 .js-body-ready .timeline-starter{
     margin-left: 0;
 }
@@ -97,10 +102,16 @@
 
 .js .fold{
     overflow: hidden;
-    width: calc(25vw + 1px);
-    height: 90vh;
-    margin-top: -45vh;
+    width: calc(20vw + 1px);
+    height: 70vh;
+    margin-top: -40vh;
     will-change: transform;
+}
+
+@media screen and (max-width: 800px){
+    .js .fold{
+        margin-top: -50vh;    
+    }    
 }
 
 .js .wrapper-3d{
@@ -155,7 +166,7 @@
 .js .fold-before{
     position: absolute;
     transform-origin: right center;
-    transform: translate3d(-100%, 0, 0) rotateY(-80deg);
+    /* transform: translate3d(-100%, 0, 0) rotateY(-80deg); */
     left: 0;
     right: 0;
     top: 0;
@@ -163,21 +174,28 @@
 }
 
 .js .fold-before-1{
-    transform: translate3d(-400%, 0, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg);
+    transform: translate3d(-550%, 0, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg);
+    /* border: 1px solid yellow; */
 }
 
 .js .fold-before-2{
-    transform: translate3d(-400%, 0, 0) rotateY(-35deg);
+    transform: translate3d(-550%, 0, 0) rotateY(-35deg);
+    /* border: 1px solid orange; */
 }
 .js .fold-before-3{
-    transform: translate3d(-126%, 0, 0);
-    width: calc(60vw + 1px);
+    transform: translate3d(-128.7%, 0, 0);
+    /* border: 1px solid red; */
+    /* transform-origin: left center; */
+    width: calc(70vw + 2px);
 }
 .js .fold-before-4{
-    transform: translate3d(18%, 0, 0) rotateY(-35deg) translate3d(-151%, 0, 0) rotateY(90deg);
+    transform: translate3d(-25%, 0, 0) rotateY(-35deg) translate3d(-136%, 0, 0) rotateY(85deg);
+    /* transform: translate3d(18%, 0, 0) rotateY(-35deg) translate3d(-151%, 0, 0) rotateY(90deg); */
+    /* border: 1px solid purple; */
 }
 .js .fold-before-5{
     transform: translate3d(0, 0, 0) rotateY(-35deg) translate3d(-100%, 0, 0) rotateY(35deg);
+    /* border: 1px solid blue; */
 }
 
 .js .fold-before-1 .fold-scroller{
@@ -190,10 +208,10 @@
     transform: translateX(0);
 }
 .js .fold-before-4 .fold-scroller{
-    transform: translateX(-240%);
+    transform: translateX(-350%);
 }
 .js .fold-before-5 .fold-scroller{
-    transform: translateX(-250%);
+    transform: translateX(-395%);
 }
 
 /* .js .fold-before-1::after{
@@ -208,11 +226,11 @@
 } */
 
 .js .content{
-    /* -webkit-user-select: none;
+    -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: -moz-none;
     -o-user-select: none;
-    user-select: none; */
+    user-select: none;
 }
 
 .content__img{

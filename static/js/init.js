@@ -1,10 +1,13 @@
 /** @see https://swup.js.org/getting-started/reloading-javascript **/
 function init (){
 
-  //Article
-  if (document.querySelector('#js-vimeo-embed')) {
+  // Not the timeline
+  if (!document.querySelector('#fold-effect')) {
     document.querySelector('body').classList.remove('fixed-body');
-
+  }
+  
+  // Video
+  if (document.querySelector('#js-vimeo-embed')) {
     const vimeoFrame = document.querySelector('#js-vimeo-embed');
 
     const options = {
