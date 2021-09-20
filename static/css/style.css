@@ -207,7 +207,7 @@ a.button:visited{
   max-width: none;
   height: auto;
 }
-#logo-laliberte:hover img{
+body:not(.fixed-body) #logo-laliberte:hover img{
   transform:translateX(0%);
 }
 #logo-laliberte{
@@ -670,6 +670,23 @@ mark{
     }
   }
 
+/* Page */
+.content-page-cover{
+  display: block;
+  margin: 0 auto;
+  max-height: 50vh
+}
+.content-page-title{
+  margin-top: -3em;
+  margin-bottom: 1em;
+  background-color: var(--color-background);
+  border-top: 1px solid var(--color-text);
+  border-bottom: 1px solid var(--color-text);
+  padding: 2em calc(var(--berry-unit)*3);
+}
+.content-page-detail{
+  padding: 1em calc(var(--berry-unit)*3);
+}
 
 /* SVG Elements */
 .timer{

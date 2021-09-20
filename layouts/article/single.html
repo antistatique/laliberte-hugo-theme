@@ -76,25 +76,25 @@
 				{{ $.Site.Params.circulateNavigationTitle }}
 			</h2>
 			<nav>
-				{{ if .PrevInSection }}
-				<a href="{{.PrevInSection.Permalink}}" class="prev">
-					<h3 class="{{ .PrevInSection.Params.title_style }} pagination-title h2">
-						{{.PrevInSection.Title}}
+				{{ if .NextInSection }}
+				<a href="{{.NextInSection.Permalink}}" class="prev">
+					<h3 class="{{ .NextInSection.Params.title_style }} pagination-title h2">
+						{{.NextInSection.Title}}
 					</h3>
 					<span class="arrow"></span>
-					{{ if .PrevInSection.Params.banner_thumb }}
-					<img src="{{ .PrevInSection.Params.banner_thumb | relURL }}" alt="{{.PrevInSection.Title}}" class="pagination-item-banner" width="126" height="126" />
-					{{ end }}
-				</a>
-				{{ end }}
-				{{ if .NextInSection }}
-				<a href="{{.NextInSection.Permalink}}" class="next">
 					{{ if .NextInSection.Params.banner_thumb }}
 					<img src="{{ .NextInSection.Params.banner_thumb | relURL }}" alt="{{.NextInSection.Title}}" class="pagination-item-banner" width="126" height="126" />
 					{{ end }}
+				</a>
+				{{ end }}
+				{{ if .PrevInSection }}
+				<a href="{{.PrevInSection.Permalink}}" class="next">
+					{{ if .PrevInSection.Params.banner_thumb }}
+					<img src="{{ .PrevInSection.Params.banner_thumb | relURL }}" alt="{{.PrevInSection.Title}}" class="pagination-item-banner" width="126" height="126" />
+					{{ end }}
 					<span class="arrow"></span>
-					<h3 class="{{ .NextInSection.Params.title_style }} pagination-title h2">
-						{{.NextInSection.Title}}
+					<h3 class="{{ .PrevInSection.Params.title_style }} pagination-title h2">
+						{{.PrevInSection.Title}}
 					</h3>
 				</a>
 				{{ end }}
