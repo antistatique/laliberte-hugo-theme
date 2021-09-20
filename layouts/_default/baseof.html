@@ -7,8 +7,24 @@
 	<title>{{ .Title }}</title>
 	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+	{{ with .Site.Params.title }}<meta property="og:site_name" content="{{ . }}" />{{ end }}
+	<meta property="og:title" content="{{ .Title }}" />
+	<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+	<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+	<meta property="og:url" content="{{ .Permalink }}" />
+	{{ with .Params.images }}{{ range first 6 . }}
+	  <meta property="og:image" content="{{ . | absURL }}" />
+	{{ end }}{{ end }}
+	{{ template "_internal/twitter_cards.html" . }}
+	{{ template "_internal/schema.html" . }}
+	<link rel="apple-touch-icon" sizes="180x180" href="/icon-256x256.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/icon-192x192.png">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e21a22">
+	<meta name="msapplication-TileColor" content="#e21a22">
+	<meta name="theme-color" content="#e21a22">
+
 	<link rel="author" href="{{ "humans.txt" | relURL }}" />
-	<!-- <link rel="manifest" href="/manifest.json"> -->
+	<link rel="manifest" href="/manifest.json">
 	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
 	<link rel="stylesheet" href="{{ "css/fold.css" | relURL }}">
 	<script>
@@ -32,6 +48,7 @@
 	<script src="{{ "js/imagesLoaded.js" | relURL }}"></script>
 	<script src="{{ "js/init.js" | relURL }}" data-swup-ignore-script></script>
 	<script src="{{ "js/swup.js" | relURL }}" data-swup-ignore-script></script>
+	<script defer data-domain="{{ $.Site.Params.Plausible }}" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
 	{{ partial "header" . }}
