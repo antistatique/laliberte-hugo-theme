@@ -44,9 +44,9 @@
 
 		{{ if .Params.images }}
 			<div class="detail-article-images">
-			{{ range $val := .Params.images }}
-				<img src="{{ $val | relURL }}" class="detail-article-images-item" loading="lazy" />
-			{{ end }}
+			{{ with .Params.images }}{{ range first 2 . }}
+				<img src="{{ . | relURL }}" class="detail-article-images-item" loading="lazy" />
+			{{ end }}{{ end }}
 			</div>
 		{{ end }}
 

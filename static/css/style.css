@@ -446,12 +446,14 @@ mark{
     display: flex;
     justify-content: space-between;
     gap: calc(var(--berry-unit)*3);
+    flex-wrap: wrap;
   }
   .detail-article-aside{
     text-align: right;
   }
   .detail-article-images-item{
-    width: 50%;
+    display: block;
+    width: 47%;
     height: auto;
   }
 
