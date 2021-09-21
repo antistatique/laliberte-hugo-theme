@@ -699,6 +699,8 @@ mark{
 }
 .content-page-detail{
   padding: 1em calc(var(--berry-unit)*3);
+  columns: 2 calc(var(--berry-unit)*30);
+  column-gap: calc(var(--berry-unit)*6);
 }
 
 /* Footer */
