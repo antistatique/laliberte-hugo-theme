@@ -16,9 +16,9 @@
     transition: margin-left 0.6s ease-out;
 }
 .timeline-starter img{
-    width: 20vw;
+    width: 80vh;
     min-width: calc(var(--berry-unit)*40);
-    max-width: calc(var(--berry-unit)*120);
+    max-width: calc(var(--berry-unit)*200);
 }
 .js-body-ready .timeline-starter{
     margin-left: 0;
@@ -47,11 +47,11 @@
     flex-direction: column;
 }
 .timeline-element-title>*{
-    padding: 0 calc(var(--berry-unit)*8);
-    width: 70%;
+    padding: 0 calc(var(--berry-unit)*9);
+    width: 60%;
 }
 .timeline-element-date{
-    padding-bottom: calc(var(--berry-unit)*8);
+    padding-bottom: calc(var(--berry-unit)*9);
 }
 
 .timeline-element-banner{
