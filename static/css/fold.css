@@ -47,11 +47,12 @@
     flex-direction: column;
 }
 .timeline-element-title>*{
-    padding: 0 calc(var(--berry-unit)*9);
-    width: 60%;
+    padding: 0 calc(var(--berry-unit)*6);
+    width: 80%;
+    max-width: 50vw;
 }
 .timeline-element-date{
-    padding-bottom: calc(var(--berry-unit)*9);
+    padding-bottom: calc(var(--berry-unit)*6);
 }
 
 .timeline-element-banner{
