@@ -467,15 +467,27 @@ mark{
     margin-right: var(--berry-unit);
   }
   .detail-article-video-frame{
-    /* TODO fix aspect ratio for not supporting aspect-ratio */
-    aspect-ratio: 16 / 9;
     background-size: cover;
     display: flex;
+    position: relative;
+    padding-top: 56.25%;
   }
+
+  .detail-article-video-frame iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   .video-show .detail-article-video-play-button{
     display: none;
   }
   .detail-article-video-play-button{
+    position: absolute;
+    left: 0;
+    bottom: 0;
     color: var(--color-background);
     width: 100%;
     height: 100%;
@@ -729,7 +741,7 @@ body.fixed-body footer{
   flex-wrap: wrap;
   justify-content: space-between;
   gap: calc(var(--berry-unit)*3);
-  margin-bottom: calc(var(--berry-unit)*6); 
+  margin-bottom: calc(var(--berry-unit)*6);
 }
 @media screen and (max-width: 800px){
   .footer-content{

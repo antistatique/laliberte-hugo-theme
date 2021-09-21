@@ -52,7 +52,7 @@
 
 		{{ if .Params.videos }}
 			<div class="detail-article-video">
-				<div id="js-vimeo-embed" style="background-image: url({{ .Params.videos_cover | relURL }}) " class="detail-article-video-frame" data-id="{{ .Params.videos}}">
+				<div id="js-vimeo-embed" style="background-image: url({{ .Params.videos_cover | relURL }}) " class="detail-article-video-frame" data-id="{{ .Params.videos }}">
 					<a href="https://vimeo.com/{{ .Params.videos}}" id="js-play-video-link" class="detail-article-video-play-button">
 						<span class="play-button">
 							<span class="play-button-triangle">
@@ -63,8 +63,6 @@
 						</span>
 					</a>
 				</div>
-
-				<script src="{{ "/js/vimeo.js" | relURL }}"></script>
 			</div>
 		{{ end }}
 
