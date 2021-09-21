@@ -690,6 +690,54 @@ mark{
   padding: 1em calc(var(--berry-unit)*3);
 }
 
+/* Footer */
+/* Grid layout desktop */
+
+body.fixed-body footer{
+  display: none;
+}
+
+@supports (display: grid) and (not (-ms-ime-align: auto)){
+  footer{
+    display: grid;
+    grid-template-columns:
+      [banner-start] minmax(calc(var(--berry-unit)*3), 1fr) [container-start]
+      minmax(200px, 30vw)
+      4vw [banner-end]
+      8vw
+      [main-start] minmax(18rem, 24rem) [main-end]
+      8rem [container-end]
+      minmax(calc(var(--berry-unit)*3), 1fr);
+    row-gap: calc(var(--berry-unit)*3);
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  .footer-content{
+    grid-area: container;
+  }
+}
+
+@media screen and (max-width: 800px){
+  footer{
+    grid-template-columns: calc(var(--berry-unit)*3) [container-start] auto [container-end] calc(var(--berry-unit)*3);
+  }
+}
+
+.footer-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: calc(var(--berry-unit)*3);
+  margin-bottom: calc(var(--berry-unit)*6); 
+}
+@media screen and (max-width: 800px){
+  .footer-content{
+    justify-content: center;
+  }
+}
+
+
 /* SVG Elements */
 .timer{
   background-image: url("data:image/svg+xml,%3Csvg width='21' height='21' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='11' stroke='%23222222' stroke-width='2'/%3E%3Cpath d='M12 12V0.75L15.75 1.5L20.25 3.75L12 12Z' fill='%23222222'/%3E%3C/svg%3E%0A");

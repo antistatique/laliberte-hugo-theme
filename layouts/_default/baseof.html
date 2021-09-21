@@ -64,7 +64,10 @@
 
 		init();
 
-		swup.on('contentReplaced', init);
+		swup.on('contentReplaced', function () {
+			init();
+			window.scrollTo(0, 0);
+		});
 	</script>
 	<style>
 	.swup-transition-main {
