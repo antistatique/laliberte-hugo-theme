@@ -5,11 +5,11 @@
 			<article class="timeline-element timeline-starter">
 				<img src="/images/timeline-title.svg" alt="{{ $.Site.Params.timelineTitle }}">
 			</article>
-			{{ range where .Site.Pages "Section" "article" }}
+			{{ range $index, $value := where .Site.Pages "Section" "article" }}
 			{{ if .Title }}
 				{{ if .Params.banner }}
 				<article class="timeline-element">
-					<a href="{{.Permalink}}" class="timeline-element-link">
+					<a href="{{.Permalink}}" class="timeline-element-link" data-id="{{ $index }}">
 						<div class="timeline-element-title">
 							<h2 class="h1 h-huge">
 								{{ if .Params.title_style }}
