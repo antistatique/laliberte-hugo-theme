@@ -5,7 +5,7 @@
 			<article class="timeline-element timeline-starter">
 				<img src="/images/timeline-title.svg" alt="{{ $.Site.Params.timelineTitle }}">
 			</article>
-			{{ range $index, $value := where .Site.Pages "Section" "article" }}
+			{{ range $index, $value := ((where .Site.Pages "Section" "article").ByParam "order") }}
 			{{ if .Title }}
 				{{ if .Params.banner }}
 				<article class="timeline-element">
