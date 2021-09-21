@@ -27,7 +27,6 @@ function init (){
     function playVimeo(e) {
       vimeoFrame.classList.toggle('video-show');
       const player = new Vimeo.Player('js-vimeo-embed', options);
-      player.on('play', function() {});
       player.play();
       e.preventDefault();
     }
@@ -61,6 +60,7 @@ function init (){
       constructor(wrapper, folds = null, scrollers = null) {
         this.folds = folds;
         this.scrollers = [];
+        this.context = null;
       }
 
       setContent(baseContent, createScrollers = true) {
@@ -89,6 +89,34 @@ function init (){
             scroller = this.scrollers[i];
           }
           scroller.append(copyContent);
+
+          scroller.querySelectorAll('.timeline-element').forEach(el => el.addEventListener('mouseout', (e) => {
+            const currentId = el.querySelector('.timeline-element-link')
+              ? el.querySelector('.timeline-element-link').dataset.id
+              : null;
+
+            if (currentId === this.context) {
+              document.querySelectorAll('[data-id="'+this.context+'"]')
+                .forEach(el => el.classList.remove('hovering'));
+              this.context = null;
+            }
+          }));
+
+          scroller.addEventListener('mouseover', (e) => {
+            const currentTimelineEl = e.target.closest('.timeline-element');
+
+            if (currentTimelineEl && !currentTimelineEl.classList.contains('timeline-starter')) {
+              const currentId = currentTimelineEl.querySelector('.timeline-element-link').dataset.id;
+              this.context = currentId;
+
+              document.querySelectorAll('[data-id="'+currentId+'"]')
+                .forEach(el => el.classList.add('hovering'));
+            }
+          });
+
+          scroller.addEventListener('mouseleave', (e) => {
+            document.querySelectorAll('.hovering').forEach(e => e.classList.remove('hovering'));
+          });
 
           scrollers[i] = scroller;
         }
@@ -204,7 +232,7 @@ function init (){
       // INITIALIZE
       insideFold = new FoldedDom(wrapper, folds);
       insideFold.setContent(baseContent);
-      
+
       tick();
       document.querySelector('body').classList.add('js-body-ready');
     });

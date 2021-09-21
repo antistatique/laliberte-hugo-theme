@@ -30,7 +30,7 @@
     display: block;
     width: 100%;
 }
-.timeline-element-link:hover .timeline-element-banner{
+.timeline-element-link.hovering .timeline-element-banner{
     border: calc(var(--berry-unit)*2) solid var(--color-brand);
 }
 .timeline-element-title{
@@ -110,8 +110,8 @@
 
 @media screen and (max-width: 800px){
     .js .fold{
-        margin-top: -50vh;    
-    }    
+        margin-top: -50vh;
+    }
 }
 
 .js .wrapper-3d{
@@ -151,7 +151,7 @@
     /* background-color: #f00; */
 }
 
-/* 
+/*
 .js .fold-after{
     position: absolute;
     transform-origin: top center;
