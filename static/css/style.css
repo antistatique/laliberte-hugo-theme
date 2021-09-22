@@ -465,6 +465,7 @@ mark{
   }
   .detail-article-images-item{
     display: block;
+    width: 50%;
     height: auto;
   }
   @media screen and (max-width: 800px){
@@ -472,7 +473,7 @@ mark{
       width: 47%;
     }
   }
-  
+
 
 
   .detail-article-readingtime{
