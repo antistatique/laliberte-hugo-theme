@@ -465,9 +465,14 @@ mark{
   }
   .detail-article-images-item{
     display: block;
-    width: 47%;
     height: auto;
   }
+  @media screen and (max-width: 800px){
+    .detail-article-images-item{
+      width: 47%;
+    }
+  }
+  
 
 
   .detail-article-readingtime{

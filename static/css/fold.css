@@ -13,7 +13,7 @@
 .timeline-starter{
     padding: 0 4vw;
     margin-left: 130vw;
-    transition: margin-left 0.6s ease-out;
+    transition: margin-left 0.8s cubic-bezier(0, 0, 0.1, 0.76);
 }
 .timeline-starter img{
     width: 80vh;
