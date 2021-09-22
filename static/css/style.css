@@ -274,7 +274,7 @@ h1, .h1, .h-huge{
   margin-bottom: 0;
 }
 .h-huge{
-  font-size: clamp(1.6em,calc(1.4em + 3vw),90px);
+  font-size: clamp(1.4em,calc(1.1em + 3vw),90px);
 }
 h2, .h2{
   font-size: clamp(1.2em,calc(1.2em + 1vw),60px);
@@ -458,13 +458,14 @@ mark{
     display: flex;
     justify-content: space-between;
     gap: calc(var(--berry-unit)*3);
+    width: 100%;
   }
   .detail-article-aside{
     text-align: right;
   }
   .detail-article-images-item{
     display: block;
-    width: 50%;
+    width: 47%;
     height: auto;
   }
 

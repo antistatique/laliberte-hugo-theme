@@ -48,11 +48,14 @@
 }
 .timeline-element-title>*{
     padding: 0 calc(var(--berry-unit)*6);
-    width: 80%;
+    width: 85%;
     max-width: 50vw;
 }
-.timeline-element-date{
+.timeline-element-title>*:last-child{
     padding-bottom: calc(var(--berry-unit)*6);
+}
+.timeline-element-date{
+    font-size: clamp(0.8em,calc(0.5em + 2vw),24px);
 }
 
 .timeline-element-banner{
