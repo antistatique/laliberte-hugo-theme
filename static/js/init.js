@@ -145,11 +145,6 @@ function init (){
     let tick = () => {
       if (state.disposed) return;
 
-      // Calculate the scroll based on how much the content is outside the mainFold
-
-      // state.targetScroll = -(
-      //   document.documentElement.scrollLeft || document.body.scrollLeft
-      // );
       state.targetScroll = Math.max(
         Math.min(0, state.targetScroll),
         -insideFold.scrollers[0].children[0].clientWidth + mainFold.clientWidth
@@ -160,81 +155,30 @@ function init (){
 
       requestAnimationFrame(tick);
     };
-    /** ATTACH EVENTS */
-    let lastClientX = null;
-    let isDown = false;
 
-    let onDown = ev => {
-      // console.log(
-      //   Math.max(
-      //     state.targetScroll,
-      //     -insideFold.scrollers[0].children[0].clientWidth + mainFold.clientWidth
-      //   )
-      // );
-      // console.log(
-      //   "s",
-      //   -insideFold.scrollers[0].children[0].clientWidth + mainFold.clientWidth
-      // );
-      isDown = true;
-    };
-    let onUp = ev => {
-      isDown = false;
-    };
-
-    window.addEventListener("mousedown", onDown);
-    window.addEventListener("mouseup", onUp);
-    window.addEventListener("mouseout", ev => {
-      var from = ev.relatedTarget || ev.toElement;
-      if (!from || from.nodeName == "HTML") {
-        // stop your drag event here
-        // for now we can just use an alert
-        isDown = false;
-      }
-    });
-    window.addEventListener("touchstart", onDown);
-    window.addEventListener("touchend", onUp);
-    window.addEventListener("touchcancel", onUp);
-
-    window.addEventListener("mousemove", ev => {
-      if (lastClientX && isDown) {
-        state.targetScroll += ev.clientX - lastClientX;
-      }
-      lastClientX = ev.clientX;
-    });
+    let lastClientX = 0;
 
     window.addEventListener("touchmove", ev => {
-      let touch = ev.touches[0];
-      if (lastClientX && isDown) {
-        let diffX = touch.clientX - lastClientX;
-        state.targetScroll += Math.sign(diffX) * 30;
-      }
+      const touch = ev.touches[0];
+      const diffX = touch.clientX - lastClientX;
+      state.targetScroll += Math.sign(diffX) * 30;
+
       lastClientX = touch.clientX;
     });
 
     window.addEventListener("wheel", ev => {
+      if (!document.querySelector('body').classList.contains('has-scrolled')) {
+        document.querySelector('body').classList.add('has-scrolled')
+      }
+
       // Fixefox delta is like 1px and chrome 100
       state.targetScroll += -Math.sign(ev.deltaY) * 30;
     });
 
-    /***********************************/
-    /********** Preload stuff **********/
+    insideFold = new FoldedDom(wrapper, folds);
+    insideFold.setContent(baseContent);
 
-      // // Preload images
-    const preloadImages = () => {
-        return new Promise((resolve, reject) => {
-          // todo manage preloading stuff
-          imagesLoaded(document.querySelectorAll('.content__img'), resolve);
-        });
-      };
-
-    // // And then..
-    preloadImages().then(() => {
-      // INITIALIZE
-      insideFold = new FoldedDom(wrapper, folds);
-      insideFold.setContent(baseContent);
-
-      tick();
-      document.querySelector('body').classList.add('js-body-ready');
-    });
+    tick();
+    document.querySelector('body').classList.add('js-body-ready');
   }
 };

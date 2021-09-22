@@ -1,7 +1,7 @@
 .fixed-body{
     overflow: hidden;
     user-select: none;
-    cursor: grab;
+    cursor: ns-resize;
 }
 .timeline-element{
     background-color: var(--color-brand);
@@ -73,6 +73,7 @@
 }
 .js .screen{
     position: fixed;
+    overflow: hidden;
     top: 0;
     left: 0;
     display: flex;
