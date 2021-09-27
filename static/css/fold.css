@@ -236,6 +236,42 @@
     -moz-user-select: -moz-none;
     -o-user-select: none;
     user-select: none;
+    width: 100vh;
+    height: 100vh;
+}
+
+.js .timeline-navigation {
+    position: absolute;
+    z-index: 99;
+    bottom: 10%;
+    right: 10%;
+    display: flex;
+}
+
+.js .timeline-navigation > a{
+    cursor: pointer;
+}
+
+.js .timeline-navigation > a:first-child{
+    margin-right: calc(var(--berry-unit)*3);
+}
+
+.js .timeline-navigation .timeline-prev{
+    transform: rotate(180deg);
+}
+
+.js .timeline-navigation .arrow {
+    transition: all 0.5s ease-in-out;
+}
+
+.js .timeline-navigation .timeline-next:hover .arrow, .js .timeline-navigation .timeline-prev:hover .arrow{
+    transform: translateX(calc(var(--berry-unit)));
+}
+
+@media screen and (max-width: 800px) {
+    .js .timeline-navigation {
+        display: none;
+    }
 }
 
 .content__img{

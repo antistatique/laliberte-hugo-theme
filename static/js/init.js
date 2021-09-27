@@ -135,10 +135,16 @@ function init (){
     }
 
     let insideFold;
-
     const mainFold = folds[folds.length - 1];
+    let currentFocused = 0;
 
-    let tick = () => {
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    const elementWidth = vw * 0.7;
+
+    const nextButton = document.querySelector('.js-timeline-next');
+    const prevButton = document.querySelector('.js-timeline-prev');
+
+    const tick = () => {
       state.targetScroll = Math.max(
         Math.min(0, state.targetScroll),
         -insideFold.scrollers[0].children[0].clientWidth + mainFold.clientWidth
@@ -146,6 +152,8 @@ function init (){
       state.scroll += lerp(state.scroll, state.targetScroll, 0.1, 0.0001);
 
       insideFold.updateStyles(state.scroll);
+
+      currentFocused = Math.abs(Math.floor(state.targetScroll / elementWidth));
 
       requestAnimationFrame(tick);
     };
@@ -179,17 +187,29 @@ function init (){
     const slugPosition = slugs.indexOf(window.location.hash);
 
     if (slugPosition !== -1) {
-      state.targetScroll += getScrollDistance(slugPosition);
+      state.targetScroll = getScrollDistance(slugPosition + 1, elementWidth);
     }
+
+    nextButton.addEventListener('click', ev => {
+      if (currentFocused < slugs.length) {
+        state.targetScroll = getScrollDistance(currentFocused + 1, elementWidth);
+      }
+
+      ev.preventDefault();
+    });
+
+    prevButton.addEventListener('click', ev => {
+      if (currentFocused > 0) {
+        state.targetScroll = getScrollDistance(currentFocused - 1, elementWidth);
+      }
+
+      ev.preventDefault();
+    });
 
     document.querySelector('body').classList.add('js-body-ready');
   }
 };
 
-const getScrollDistance = (position) => {
-  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-  // 0.7 since each element takes 70% of the viewport
-  const elementWidth = vw * 0.7;
-
-  return -((position + 1) * elementWidth);
+const getScrollDistance = (position, width) => {
+  return -(position * width);
 }
