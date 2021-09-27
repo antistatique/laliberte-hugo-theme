@@ -236,8 +236,13 @@
     -moz-user-select: -moz-none;
     -o-user-select: none;
     user-select: none;
-    width: 100vh;
-    height: 100vh;
+}
+
+@media screen and (min-width: 800px) {
+    .js .content{
+        width: 100vh;
+        height: 100vh;
+    }
 }
 
 .js .timeline-navigation {
@@ -264,7 +269,8 @@
     transition: all 0.5s ease-in-out;
 }
 
-.js .timeline-navigation .timeline-next:hover .arrow, .js .timeline-navigation .timeline-prev:hover .arrow{
+.js .timeline-navigation .timeline-next:hover .arrow,
+.js .timeline-navigation .timeline-prev:hover .arrow {
     transform: translateX(calc(var(--berry-unit)));
 }
 
