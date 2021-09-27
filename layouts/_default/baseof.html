@@ -53,7 +53,30 @@
 	<script defer data-domain="{{ $.Site.Params.Plausible }}" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
-	{{ partial "header" . }}
+	<header id="swup-header">
+		{{ block "logo" . }}
+		<a href="/" id="logo-laliberte">
+			<img src="/images/logo_laliberte.svg?year=2021" alt="Logo de La Liberté">
+			<span>
+			La Liberté
+		</span>
+		</a>
+		{{ end }}
+		<nav class="a11y-navigation" aria-label="Accessibility navigation">
+			<ul>
+				<li>
+					<a class="sr-only sr-show-on-focus" accesskey="0" href="/" title="[Alt+0] Page d'accueil">Homepage</a>
+				</li>
+				<li>
+					<a class="sr-only sr-show-on-focus" accesskey="2" href="#main" title="[Alt+2] Aller au contenu de la page">Aller au contenu</a>
+				</li>
+				<li>
+					<a class="sr-only sr-show-on-focus" accesskey="2" href="{{ $.Site.Params.aboutPageSlug | relURL }}" title="[Alt+3] Aller à la page {{ $.Site.Params.aboutPageTitle }}">Page {{ $.Site.Params.aboutPageTitle }}</a>
+				</li>
+			</ul>
+		</nav>
+		<a href="{{ $.Site.Params.aboutPageSlug | relURL }}" class="nav-link formula">{{ $.Site.Params.aboutPageTitle }}</a>
+	</header>
 	<main class="swup-transition-main" id="swup">
 		{{ block "main" . }}{{ end }}
 	</main>
@@ -61,7 +84,8 @@
 	<script>
 		const swup = new Swup({
 			plugins: [new SwupPreloadPlugin()],
-			theme: [new SwupSlideTheme()]
+			theme: [new SwupSlideTheme()],
+			containers: ["#swup", "#swup-header"]
 		});
 
 		init();

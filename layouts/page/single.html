@@ -1,13 +1,13 @@
 {{ define "main" }}
 
-	
+
 	<div class="container content-page">
 		{{ if .Params.cover }}
 		<div class="container-full">
 			<img src="{{ .Params.cover | relURL }}" alt="{{ .Title }}" class="content-page-cover" />
 		</div>
 		{{ end }}
-		
+
 		<div class="content-page-title">
 			<h1>
 				{{ if .Params.title_style }}
@@ -19,7 +19,7 @@
 				{{ end }}
 			</h1>
 		</div>
-		
+
 		<div class="content-page-detail">
 		{{ .Content }}
 		</div>

@@ -9,7 +9,7 @@
 			{{ if .Title }}
 				{{ if .Params.banner }}
 				<article class="timeline-element">
-					<a href="{{.Permalink}}" class="timeline-element-link" data-id="{{ $index }}">
+					<a href="{{.Permalink}}" class="timeline-element-link" data-id="{{ $index }}" data-slug="#{{ path.Base .Permalink }}">
 						<div class="timeline-element-title">
 							<h2 class="h1 h-huge">
 								{{ if .Params.title_style }}

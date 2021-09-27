@@ -41,7 +41,6 @@ function init (){
     const baseContent = document.getElementById("base-content");
 
     let state = {
-      disposed: false,
       targetScroll: 0,
       scroll: 0
     };
@@ -124,11 +123,8 @@ function init (){
       }
 
       updateStyles(scroll) {
-        const folds = this.folds;
-        const scrollers = this.scrollers;
-
-        for (let i = 0; i < folds.length; i++) {
-          const scroller = scrollers[i];
+        for (let i = 0; i < this.folds.length; i++) {
+          const scroller = this.scrollers[i];
 
           // Scroller fixed so its aligned
           // scroller.style.transform = `translateY(${100 * -i}%)`;
@@ -143,8 +139,6 @@ function init (){
     const mainFold = folds[folds.length - 1];
 
     let tick = () => {
-      if (state.disposed) return;
-
       state.targetScroll = Math.max(
         Math.min(0, state.targetScroll),
         -insideFold.scrollers[0].children[0].clientWidth + mainFold.clientWidth
@@ -177,8 +171,25 @@ function init (){
 
     insideFold = new FoldedDom(wrapper, folds);
     insideFold.setContent(baseContent);
-
     tick();
+
+    const slugs = Array.from(mainFold.querySelectorAll('.timeline-element > a'))
+      .map(element => element.dataset.slug);
+
+    const slugPosition = slugs.indexOf(window.location.hash);
+
+    if (slugPosition !== -1) {
+      state.targetScroll += getScrollDistance(slugPosition);
+    }
+
     document.querySelector('body').classList.add('js-body-ready');
   }
 };
+
+const getScrollDistance = (position) => {
+  const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+  // 0.7 since each element takes 70% of the viewport
+  const elementWidth = vw * 0.7;
+
+  return -((position + 1) * elementWidth);
+}
