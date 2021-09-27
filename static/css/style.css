@@ -364,10 +364,19 @@ mark{
         max-width: 100%;
         margin: 0;
       }
+      .detail-article.detail-article-landscapebanner{
+        grid-auto-rows: auto;
+      }
       .detail-article-banner{
         grid-row-start: 1;
         grid-row-end: 5;
         grid-column: banner;
+      }
+      .detail-article-landscapebanner .detail-article-banner{ 
+        grid-column-start: 0;
+        grid-column-end: 6;
+        grid-row-start: 0;
+        grid-row-end: 1;
       }
       .detail-article-title{
         grid-column-start: 3;
@@ -376,6 +385,9 @@ mark{
         grid-row-end: 3;
         align-self: end;
         z-index: 10;
+      }
+      .detail-article-landscapebanner .detail-article-title{
+        grid-row-start:1;
       }
       .detail-article-lead{
         grid-column: main;

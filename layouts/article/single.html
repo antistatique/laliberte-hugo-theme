@@ -8,7 +8,7 @@
 {{ end }}
 {{ define "main" }}
 
-	<article class="detail-article">
+	<article class="detail-article{{ if .Params.landscape_banner }} detail-article-landscapebanner{{ end }}">
 
 		{{ if .Params.banner }}
 		<img srcset="{{ .Params.banner | relURL }} 480w,
