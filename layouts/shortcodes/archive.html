@@ -1,0 +1,8 @@
+<div class="archive">
+	<a href="{{ .Get "href" }}"  {{ with .Get "target" }}target="{{.}}"{{ end }} class="{{ with .Get "class" }} {{.}}{{ end }}">
+		<h3>{{ .Get "title" }}</h3>
+		<p> {{ .Inner }}</p>
+		<p class="archive-date">{{ .Get "date" }}</p>
+		<img src="{{ .Get "image" }}"/>
+	</a>
+</div>

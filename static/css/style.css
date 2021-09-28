@@ -357,7 +357,7 @@ mark{
     @media screen and (min-width: 800px) {
       .detail-article{
         display: grid;
-        grid-template-columns: [banner-start] minmax(calc(var(--berry-unit)*3), 1fr) minmax(200px, 30vw) 4vw [banner-end] 8vw [main-start] minmax(18rem, 24rem) [main-end] 8rem minmax(calc(var(--berry-unit)*3), 1fr);
+        grid-template-columns: [banner-start] minmax(calc(var(--berry-unit)*3), 1fr) minmax(200px, 30vw) 4vw [banner-end] 8vw [main-start] minmax(18rem, 28rem) [main-end] 8rem minmax(calc(var(--berry-unit)*3), 1fr);
         grid-auto-rows: 10vw minmax(21px, auto) minmax(21px, auto) auto;
         row-gap: calc(var(--berry-unit)*3);
         width: 100%;
