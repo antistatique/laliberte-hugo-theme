@@ -800,6 +800,15 @@ mark{
   filter: grayscale(0);
 }
 
+/* Big number */
+.number{
+  text-align: right;
+  margin-right: calc(var(--berry-unit)*-5);
+}
+.detail-article h3.number-big{
+  margin-bottom: 0;
+}
+
 /* Footer */
 /* Grid layout desktop */
 
