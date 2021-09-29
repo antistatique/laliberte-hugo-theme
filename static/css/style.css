@@ -803,10 +803,16 @@ mark{
 /* Big number */
 .number{
   text-align: right;
-  margin-right: calc(var(--berry-unit)*-5);
+  margin-top: calc(var(--berry-unit)*3);
+  margin-bottom: calc(var(--berry-unit)*3);
+  margin-right: calc(var(--berry-unit)*-4);
+  
 }
 .detail-article h3.number-big{
-  margin-bottom: 0;
+  margin: 0;
+}
+.number-text{
+  padding-left: 30%;
 }
 
 /* Footer */
