@@ -806,8 +806,13 @@ mark{
   margin-top: calc(var(--berry-unit)*3);
   margin-bottom: calc(var(--berry-unit)*3);
   margin-right: calc(var(--berry-unit)*-4);
-  
 }
+@media screen and (max-width: 800px){
+  .number{
+    margin-right: 0;
+  }
+}
+
 .detail-article h3.number-big{
   margin: 0;
 }
