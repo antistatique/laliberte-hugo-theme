@@ -823,6 +823,17 @@ mark{
   padding-left: 30%;
 }
 
+/* Legend */
+
+
+.legend{
+  margin-top: calc(var(--berry-unit)*-1);
+  margin-bottom: calc(var(--berry-unit)*3);
+}
+.legend-text{
+  font-size: 0.8em;
+}
+
 /* Footer */
 /* Grid layout desktop */
 
