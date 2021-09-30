@@ -343,8 +343,11 @@ mark{
 
   .detail-article blockquote{
     border-left: 2px solid var(--color-text);
-    margin-left: 20px;
-    padding-left: 10px;
+    margin-left: calc(var(--berry-unit)*3);
+    padding-left: calc(var(--berry-unit)*2);
+    margin-top: calc(var(--berry-unit)*4);
+    margin-bottom: calc(var(--berry-unit)*4); 
+    font-size: 1.1em;
   }
 
   .detail-article h3{
