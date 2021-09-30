@@ -73,6 +73,12 @@
 				</div>
 			</div>
 		{{ end }}
+		
+		{{ if .Params.footer_image }}
+			<div class="detail-article-footer-image-container">
+				<img src="{{ .Params.footer_image | relURL }}" alt="" class="detail-article-footer-image" />
+			</div>
+		{{ end }}
 
 	</article>
 

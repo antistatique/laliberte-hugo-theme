@@ -441,6 +441,12 @@ mark{
         grid-row-end: 7;
         margin-right: calc(var(--berry-unit)*3);
       }
+      .detail-article-footer-image-container{
+        grid-column-start: 1;
+        grid-column-end: 8;
+        grid-row-start: 7;
+        grid-row-end: 8;
+      }
     }
   }
 
@@ -461,6 +467,12 @@ mark{
     }
     .detail-article-aside{
       margin-top: 1rem;
+    }
+    .detail-article-footer-image-container {
+      overflow-x: scroll;
+    }
+    .detail-article-footer-image{
+      min-width: 1400px;
     }
   }
 
