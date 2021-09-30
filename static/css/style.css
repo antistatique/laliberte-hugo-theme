@@ -60,6 +60,14 @@
   font-weight: 400;
   font-display: fallback;
 }
+@font-face{
+  font-family: "timepost";
+  src: url("../fonts/tiempos-text-web-semibold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+  font-display: fallback;
+}
+
 
 
 /* A11Y */
@@ -126,6 +134,9 @@ body{
   font-family: "formulacondensed";
   letter-spacing: 0.05em;
   font-weight: normal;
+}
+strong{
+  font-weight: 600;
 }
 
 main{
