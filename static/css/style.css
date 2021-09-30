@@ -429,6 +429,7 @@ mark{
         grid-column-end: 7;
         grid-row-start: 3;
         grid-row-end: 4;
+        padding-left: var(--berry-unit);
       }
       .detail-article-aside{
         margin-left: calc(var(--berry-unit)*3);
