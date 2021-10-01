@@ -28,28 +28,27 @@
 
 	<link rel="author" href="{{ "humans.txt" | relURL }}" />
 	<link rel="manifest" href="/manifest.json">
-	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
-	<link rel="stylesheet" href="{{ "css/fold.css" | relURL }}">
+	<link rel="stylesheet" href="{{ "css/style.css?20211001-0001" | relURL }}">
+	<link rel="stylesheet" href="{{ "css/fold.css?20211001-0001" | relURL }}">
 	<script>
 		document.documentElement.className = document.documentElement.className.replace("no-js","js");
 	</script>
 
 	<script>
-		// Register our service-worker
-		// if (navigator.serviceWorker) {
-		// 	window.addEventListener('load', function() {
-		// 		navigator.serviceWorker.register('/sw.js', {
-		// 			scope: '/'
-		// 		});
-		// 		if (navigator.serviceWorker.controller) {
-		// 			navigator.serviceWorker.controller.postMessage({'command': 'trimCaches'});
-		// 		}
-		// 	});
-		// }
+		if (navigator.serviceWorker) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker.register('/sw.js', {
+					scope: '/'
+				});
+				if (navigator.serviceWorker.controller) {
+					navigator.serviceWorker.controller.postMessage({'command': 'trimCaches'});
+				}
+			});
+		}
 	</script>
 
-	<script src="{{ "js/init.js" | relURL }}" data-swup-ignore-script></script>
-	<script src="{{ "js/swup.js" | relURL }}" data-swup-ignore-script></script>
+	<script src="{{ "js/init.js?20211001-0001" | relURL }}" data-swup-ignore-script></script>
+	<script src="{{ "js/swup.js?20211001-0001" | relURL }}" data-swup-ignore-script></script>
 	<script defer data-domain="{{ $.Site.Params.Plausible }}" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
