@@ -50,13 +50,7 @@
 			{{ .Content }}
 		</div>
 
-		{{ if .Params.images }}
-			<div class="detail-article-images">
-			{{ with .Params.images }}{{ range first 2 . }}
-				<img src="{{ . | relURL }}" class="detail-article-images-item" loading="lazy" />
-			{{ end }}{{ end }}
-			</div>
-		{{ end }}
+		
 
 		{{ if .Params.videos }}
 			<div class="detail-article-video">
@@ -80,7 +74,18 @@
 			</div>
 		{{ end }}
 
+		{{ if .Params.images }}
+		<div class="detail-article-images">
+			<div class="detail-article-images-sticky-container">	
+			{{ with .Params.images }}{{ range first 6 . }}
+				<img src="{{ . | relURL }}" class="detail-article-images-item" loading="lazy" />
+			{{ end }}{{ end }}
+			</div>
+		</div>
+		{{ end }}
+		
 	</article>
+
 
 	<div class="pagination-container">
 		<div class="pagination">
