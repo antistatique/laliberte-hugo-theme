@@ -510,21 +510,23 @@ mark{
   }
   @media screen and (min-width: 800px){
     .detail-article-images-sticky-container{
+      border: calc(var(--berry-unit)*3) solid var(--color-background);
       margin-top: 45vh;
       position: sticky;
       top: calc(var(--berry-unit)*3);
-      z-index: -1;
+      z-index: 10;
+      background-color: var(--color-background);
     }
   }
-  @media screen and (min-width: 1200px){
+  @media screen and (min-width: 1500px){
     .detail-article-images-item{
-      width: 47%;
+      width: 48%;
     }
   }
   
   @media screen and (max-width: 800px){
     .detail-article-images-item{
-      width: 47%;
+      width: 48%;
     }
   }
 
