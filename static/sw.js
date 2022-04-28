@@ -2,7 +2,7 @@
 
 // Inspired/understood by the book GoingOffline from Jeremy Keith and also quite copied his very own website https://adactio.com/serviceworker.js
 
-const version = '20211001-0002';
+const version = '20220428-0001';
 const staticCacheName = version + 'static';
 const pagesCacheName = 'pages';
 const imagesCacheName = 'images';
@@ -130,10 +130,10 @@ addEventListener('fetch', event => {
 	const retrieveFromCache = caches.match(request);
 
 	// For HTML requests, try the network first, fall back to the cache, finally the offline page
-	if (request.headers.get('Accept').includes('text/html')) {
+	if (request.mode === 'navigate' || request.headers.get('Accept').includes('text/html')) {
 		event.respondWith(
 			new Promise( resolveWithResponse => {
-
+	
 				const timer = setTimeout( () => {
 					// Time out: CACHE
 					retrieveFromCache
@@ -143,10 +143,9 @@ addEventListener('fetch', event => {
 						}
 					})
 				}, timeout);
-
-				const retrieveFromFetch = event.preloadResponse || fetch(request);
-
-				retrieveFromFetch
+	
+				Promise.resolve(event.preloadResponse)
+				.then( preloadResponse => preloadResponse || fetch(request) )
 				.then( responseFromFetch => {
 					// NETWORK
 					clearTimeout(timer);
@@ -166,24 +165,24 @@ addEventListener('fetch', event => {
 				})
 				.catch( fetchError => {
 					clearTimeout(timer);
-					console.error(fetchError);
+					console.error(fetchError, request);
 					// CACHE or FALLBACK
-					caches.match(request)
+					retrieveFromCache
 					.then( responseFromCache => {
 						resolveWithResponse(
 							responseFromCache || caches.match('/index.html')
 						);
 					});
 				});
-
+	
 			})
 		)
 		return;
-	}
+	}	
 
 	// For non-HTML requests, look in the cache first, fall back to the network
 	event.respondWith(
-		caches.match(request)
+		retrieveFromCache
 		.then(responseFromCache => {
 			// CACHE
 			return responseFromCache || fetch(request)
